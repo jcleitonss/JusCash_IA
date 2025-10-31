@@ -279,9 +279,6 @@ Verifica processo judicial conforme políticas POL-1 a POL-8
 ```mermaid
 graph LR
     LF[🎨 LangFlow<br/>Editor Visual]:::lf <-->|⇄| SA[🔄 Sync Agent<br/>✅ Atual]:::sa
-    LF[ Observação: O LangFlow precisa que você clique no link do log do Sync Agent pra poder fazer a primeira  visualização de um workflow importado.:::sa
-    LF[Você pode ver os links dos workflows importados nos logs do conteiner rodando no console docker.:::sa
-    LF[ Já esta salvo um workflow.json que será importado e tem a estrutura do projeto para testes.:::sa
     SA <-->|⇄| FS[(💾 langflow-flows/<br/>workflow.json)]:::fs
     FS -.->|Identifica| ST[🔧 Sync Tradutor<br/>🔜 Futuro]:::st
     ST -.->|Gera| BE[⚙️ Backend<br/>workflow.py]:::be
@@ -292,6 +289,15 @@ graph LR
     classDef st fill:#F59E0B,stroke:#D97706,stroke-width:3px,color:#fff,stroke-dasharray: 5 5
     classDef be fill:#3B82F6,stroke:#1D4ED8,stroke-width:2px,color:#fff
 ```
+Observações:
+
+⚠️ O LangFlow precisa que você clique no link do log do Sync Agent para visualizar o workflow importado pela primeira vez
+
+📋 Veja os links nos logs do container: docker logs -f juscrash-sync-agent
+
+✅ Já existe um workflow.json salvo para testes
+
+
 
 > 📖 **[Ver Fluxo Completo de Sincronização](docs/SYNC_FLOW.md)** - Diagramas detalhados
 
