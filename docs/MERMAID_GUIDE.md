@@ -1,4 +1,4 @@
-# 🎨 Guia Mermaid - JUSCRASH
+# 🎨 Guia Mermaid - JUSCASH
 
 Guia completo para usar e personalizar os diagramas Mermaid do projeto.
 
