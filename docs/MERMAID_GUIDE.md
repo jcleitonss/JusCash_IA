@@ -245,7 +245,7 @@ graph LR
 
 ---
 
-### Paleta JUSCRASH
+### Paleta JUSCASH
 
 ```mermaid
 graph TB
@@ -532,7 +532,7 @@ graph LR
 - **Docs:** https://mermaid.js.org/intro/
 - **Editor:** https://mermaid.live
 
-### Exemplos JUSCRASH
+### Exemplos JUSCASH
 - [DIAGRAMS.md](DIAGRAMS.md) - Biblioteca completa
 - [ARCHITECTURE.md](ARCHITECTURE.md) - Diagramas técnicos
 - [PRESENTATION.md](PRESENTATION.md) - Diagramas executivos
@@ -596,7 +596,7 @@ sequenceDiagram
 Antes de publicar seu diagrama:
 
 - [ ] Sintaxe correta (testa em mermaid.live)
-- [ ] Cores consistentes (paleta JUSCRASH)
+- [ ] Cores consistentes (paleta JUSCASH)
 - [ ] Emojis apropriados
 - [ ] Texto legível (não muito longo)
 - [ ] Classes CSS definidas
@@ -628,7 +628,7 @@ graph LR
 ---
 
 **Autor:** José Cleiton  
-**Projeto:** JUSCRASH  
+**Projeto:** JUSCASH  
 **Data:** Janeiro 2025
 
 ---
