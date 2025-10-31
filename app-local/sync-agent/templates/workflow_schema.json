@@ -1,0 +1,44 @@
+{
+  "description": "Schema de referência para conversão LangGraph ↔ LangFlow",
+  "langgraph_structure": {
+    "imports": [
+      "from langgraph.graph import StateGraph, END",
+      "from typing import TypedDict",
+      "from langchain_core.prompts import ChatPromptTemplate",
+      "from langchain_core.output_parsers import JsonOutputParser",
+      "from app.llm_service import llm",
+      "from app.models import Processo, DecisionResponse"
+    ],
+    "state": {
+      "type": "TypedDict",
+      "fields": {
+        "processo": "Processo",
+        "decision": "DecisionResponse | None"
+      }
+    },
+    "nodes": [
+      {
+        "name": "analyze",
+        "function": "analyze_node",
+        "description": "Analisa processo usando LLM"
+      }
+    ],
+    "edges": [
+      {
+        "from": "analyze",
+        "to": "END"
+      }
+    ],
+    "entry_point": "analyze"
+  },
+  "langflow_mapping": {
+    "StateGraph": "Flow with state management",
+    "TypedDict": "State definition in flow data",
+    "ChatPromptTemplate": "PromptComponent",
+    "ChatBedrock": "BedrockComponent",
+    "JsonOutputParser": "OutputParserComponent",
+    "add_node": "nodes array entry",
+    "add_edge": "edges array entry",
+    "compile": "flow compilation metadata"
+  }
+}

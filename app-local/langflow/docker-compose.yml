@@ -1,0 +1,20 @@
+services:
+  langflow:
+    image: langflowai/langflow:latest
+    container_name: langflow
+    ports:
+      - "7860:7860"
+    volumes:
+      - langflow-data:/var/lib/langflow
+    environment:
+      - LANGFLOW_AUTO_LOGIN=false
+      # AWS Bedrock Credentials
+      - AWS_ACCESS_KEY_ID=AKIAQF53QHFGBNVOHXMC
+      - AWS_SECRET_ACCESS_KEY=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
+      - AWS_DEFAULT_REGION=us-east-1
+      # Bedrock Model
+      - BEDROCK_MODEL_ID=anthropic.claude-3-5-sonnet-20240620-v1:0
+    command: langflow run --host 0.0.0.0 --port 7860 --no-open-browser
+
+volumes:
+  langflow-data:

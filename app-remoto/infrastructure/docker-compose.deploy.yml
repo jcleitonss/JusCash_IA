@@ -1,0 +1,150 @@
+services:
+  terraform-init:
+    image: hashicorp/terraform:latest
+    working_dir: /workspace/infrastructure
+    volumes:
+      - ../:/workspace
+    env_file:
+      - ../../keys/.env
+    command: init
+
+  terraform-plan:
+    image: hashicorp/terraform:latest
+    working_dir: /workspace/infrastructure
+    volumes:
+      - ../:/workspace
+    env_file:
+      - ../../keys/.env
+    entrypoint: ["/bin/sh", "-c"]
+    command: >
+      "
+      echo '📝 Gerando terraform.tfvars...';
+      echo 'langsmith_api_key=\"'$LANGSMITH_API_KEY'\"' > terraform.tfvars;
+      echo 'langsmith_project=\"'$LANGSMITH_PROJECT'\"' >> terraform.tfvars;
+      echo 'langchain_tracing_enabled=\"'$LANGCHAIN_TRACING_V2'\"' >> terraform.tfvars;
+      terraform plan;
+      "
+
+  terraform-apply:
+    image: hashicorp/terraform:latest
+    working_dir: /workspace/infrastructure
+    volumes:
+      - ../:/workspace
+    env_file:
+      - ../../keys/.env
+    entrypoint: ["/bin/sh", "-c"]
+    command: >
+      "
+      echo '📝 Gerando terraform.tfvars do .env...';
+      echo 'langsmith_api_key=\"'$LANGSMITH_API_KEY'\"' > terraform.tfvars;
+      echo 'langsmith_project=\"'$LANGSMITH_PROJECT'\"' >> terraform.tfvars;
+      echo 'langchain_tracing_enabled=\"'$LANGCHAIN_TRACING_V2'\"' >> terraform.tfvars;
+      echo '✅ terraform.tfvars criado';
+      terraform apply -auto-approve;
+      "
+
+  terraform-output:
+    image: hashicorp/terraform:latest
+    working_dir: /workspace/infrastructure
+    volumes:
+      - ../:/workspace
+    env_file:
+      - ../../keys/.env
+    command: output
+
+  deploy-backend:
+    image: docker:24-cli
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ../agent-core:/workspace
+    working_dir: /workspace
+    env_file:
+      - ../../keys/.env
+    entrypoint: /bin/sh
+    command:
+      - -c
+      - |
+        apk add --no-cache aws-cli python3 &&
+        chmod +x deploy.sh &&
+        ./deploy.sh
+
+  deploy-frontend:
+    image: node:18-alpine
+    working_dir: /workspace
+    volumes:
+      - ../../:/workspace
+    env_file:
+      - ../../keys/.env
+    environment:
+      - VERSION=${VERSION:-dev}
+    command: |
+      sh -c "
+        cd app-local/frontend &&
+        npm ci &&
+        npm run build &&
+        apk add --no-cache aws-cli &&
+        aws s3 sync dist/ s3://juscrash-frontend/ --delete
+      "
+
+  git-init:
+    image: alpine/git:latest
+    working_dir: /repo
+    volumes:
+      - ../../:/repo
+    env_file:
+      - ../../keys/.env
+    entrypoint: /bin/sh
+    command:
+      - -c
+      - |
+        git config --global user.email 'jcleitonss@users.noreply.github.com' &&
+        git config --global user.name 'jcleitonss' &&
+        git init &&
+        git remote add origin https://github.com/jcleitonss/JusCash_IA.git || true &&
+        git branch -M main &&
+        git checkout -b dev
+
+  git-save:
+    image: alpine/git:latest
+    working_dir: /repo
+    volumes:
+      - ../../:/repo
+    env_file:
+      - ../../keys/.env
+    entrypoint: /bin/sh
+    command:
+      - -c
+      - |
+        git config --global user.email 'jcleitonss@users.noreply.github.com' &&
+        git config --global user.name 'jcleitonss' &&
+        git add . &&
+        git commit -m "$${MSG:-update}" || echo 'Nada para commitar' &&
+        git push https://$${GITHUB_TOKEN}@github.com/$${GITHUB_USER}/$${GITHUB_REPO}.git dev
+
+  git-status:
+    image: alpine/git:latest
+    working_dir: /repo
+    volumes:
+      - ../../:/repo
+    command: status -s
+
+  git-clean:
+    image: alpine/git:latest
+    working_dir: /repo
+    volumes:
+      - ../../:/repo
+    env_file:
+      - ../../keys/.env
+    entrypoint: /bin/sh
+    command:
+      - -c
+      - |
+        git rm --cached -r app-remoto/agent-core/lambda-package.zip || true &&
+        git rm --cached -r app-remoto/agent-core/package/ || true &&
+        git rm --cached -r app-remoto/infrastructure/.terraform/ || true &&
+        echo "app-remoto/agent-core/lambda-package.zip" >> .gitignore &&
+        echo "app-remoto/agent-core/package/" >> .gitignore &&
+        echo "app-remoto/infrastructure/.terraform/" >> .gitignore &&
+        git add .gitignore &&
+        git commit -m "chore: remove arquivos grandes do Git" &&
+        git push https://$${GITHUB_TOKEN}@github.com/$${GITHUB_USER}/$${GITHUB_REPO}.git main

@@ -1,0 +1,17 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Instala dependências
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt langgraph-cli
+
+# Copia código
+COPY app/ ./app/
+COPY langgraph.json .
+
+# Expõe porta
+EXPOSE 8123
+
+# Comando de inicialização
+CMD ["langgraph", "dev", "--host", "0.0.0.0", "--port", "8123"]
