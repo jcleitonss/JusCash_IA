@@ -1,6 +1,6 @@
-# 🏛️ JUSCRASH - Resumo Visual em Uma Página
+# 🏛️ JUSCASH - Resumo Visual em Uma Página
 
-Tudo que você precisa saber sobre o JUSCRASH em uma única página.
+Tudo que você precisa saber sobre o JUSCASH em uma única página.
 
 ---
 
@@ -161,7 +161,7 @@ graph LR
 | 🌐 **Frontend** | https://d26fvod1jq9hfb.cloudfront.net |
 | 🔌 **API** | https://3p6xtd91q4.execute-api.us-east-1.amazonaws.com/prod |
 | 📖 **Docs** | [/docs](https://3p6xtd91q4.execute-api.us-east-1.amazonaws.com/prod/docs) |
-| 💻 **GitHub** | https://github.com/jcleitonss/JusCash |
+| 💻 **GitHub** | https://github.com/jcleitonss/JusCash_IA |
 
 ---
 
@@ -204,7 +204,6 @@ graph LR
 - ⚡ [QUICK_REFERENCE.md](QUICK_REFERENCE.md) - 5 min
 - 🎯 [PRESENTATION.md](PRESENTATION.md) - 10 min
 - 🏗️ [ARCHITECTURE.md](ARCHITECTURE.md) - 20 min
-- 📄 [JUSCRASH_Fluxo_LLM.md](JUSCRASH_Fluxo_LLM.md) - 30 min
 - 📊 [DIAGRAMS.md](DIAGRAMS.md) - Biblioteca
 - 📚 [INDEX.md](INDEX.md) - Índice completo
 
@@ -228,8 +227,8 @@ graph LR
 ## 📞 Contato
 
 **Desenvolvedor:** José Cleiton  
-**GitHub:** [github.com/jcleitonss/JusCash](https://github.com/jcleitonss/JusCash)  
-**Projeto:** JUSCRASH
+**GitHub:** https://github.com/jcleitonss/JusCash_IA
+**Projeto:** JUSCASH
 
 ---
 
@@ -237,7 +236,7 @@ graph LR
 
 ```mermaid
 graph TB
-    P[🏛️ JUSCRASH]:::main
+    P[🏛️ JUSCASH]:::main
     
     P --> A[⚡ Rápido<br/>3s]:::benefit
     P --> B[💰 Barato<br/>$26/mês]:::benefit
@@ -248,7 +247,7 @@ graph TB
     classDef benefit fill:#10B981,stroke:#059669,stroke-width:2px,color:#fff,font-size:12px
 ```
 
-**JUSCRASH transforma análise jurídica manual em decisões automáticas, rápidas e precisas usando IA.**
+**JUSCASH transforma análise jurídica manual em decisões automáticas, rápidas e precisas usando IA.**
 
 ---
 
