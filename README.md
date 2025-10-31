@@ -12,7 +12,7 @@ Sistema automatizado de análise de processos judiciais utilizando **LLM (AWS Be
 | **Frontend** | `https://d26fvod1jq9hfb.cloudfront.net/` | Interface React + Material UI |
 | **API** | `https://3p6xtd91q4.execute-api.us-east-1.amazonaws.com/prod/api/v1/verificar` | Endpoints REST |
 | **Swagger** | `https://3p6xtd91q4.execute-api.us-east-1.amazonaws.com/prod/docs#/` | Documentação interativa |
-| **Health** | `https://3p6xtd91q4.execute-api.us-east-1.amazonaws.com/prod/docs#/` | Status da API |
+| **Health** | `https://3p6xtd91q4.execute-api.us-east-1.amazonaws.com/prod/health` | Status da API |
 
 > **Infraestrutura:** AWS Lambda + API Gateway + CloudFront + S3 + Bedrock + CloudWatch  
 > **IaC:** Terraform  
