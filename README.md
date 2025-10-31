@@ -441,7 +441,7 @@ curl -X POST [SEU_API_GATEWAY_URL]/api/v1/verificar \
 curl http://localhost:8000/health
 
 # Remoto
-curl [SEU_API_GATEWAY_URL]/health
+curl https://3p6xtd91q4.execute-api.us-east-1.amazonaws.com/prod/health
 ```
 
 ---
