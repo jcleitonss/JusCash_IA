@@ -1,6 +1,6 @@
 # ⚡ JUSCRASH - Referência Rápida Visual
 
-Guia visual rápido para entender o JUSCRASH em 5 minutos.
+Guia visual rápido para entender o JusCash em 5 minutos.
 
 ---
 
@@ -257,12 +257,12 @@ make logs      # Ver logs
 
 ```mermaid
 graph TD
-    JUSCRASH[🏛️ JUSCRASH]:::main
+    JusCash[🏛️ JusCash]:::main
     
-    JUSCRASH --> D1[🎨 Editor Visual<br/>LangFlow]:::diff
-    JUSCRASH --> D2[☁️ 100% Serverless<br/>AWS]:::diff
-    JUSCRASH --> D3[📊 Observabilidade<br/>LangSmith]:::diff
-    JUSCRASH --> D4[🧠 IA Avançada<br/>Claude 3.5]:::diff
+    JusCash --> D1[🎨 Editor Visual<br/>LangFlow]:::diff
+    JusCash --> D2[☁️ 100% Serverless<br/>AWS]:::diff
+    JusCash --> D3[📊 Observabilidade<br/>LangSmith]:::diff
+    JusCash --> D4[🧠 IA Avançada<br/>Claude 3.5]:::diff
     
     classDef main fill:#7C3AED,stroke:#5B21B6,stroke-width:4px,color:#fff,font-size:16px
     classDef diff fill:#10B981,stroke:#059669,stroke-width:2px,color:#fff,font-size:12px
@@ -347,7 +347,7 @@ graph LR
 
 **Desenvolvedor:** José Cleiton  
 **GitHub:** [github.com/jcleitonss/JusCash](https://github.com/jcleitonss/JusCash)  
-**Projeto:** JUSCRASH - Verificador Inteligente de Processos Judiciais
+**Projeto:** JusCash - Verificador Inteligente de Processos Judiciais
 
 ---
 
