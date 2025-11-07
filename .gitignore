@@ -1,0 +1,57 @@
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# GitHub Token (NUNCA commitar!)
+keys/.env
+app-remoto/infrastructure/.env
+
+# Keys
+app-local/keys/*.csv
+app-local/keys/*.key
+app-local/keys/*.pem
+app-local/keys/config.py
+!app-local/keys/.gitkeep
+!app-local/keys/README.md
+
+# AWS Credentials (JUSCRASH/keys/)
+keys/credentials
+keys/config
+keys/*.csv
+keys/*.key
+keys/*.pem
+!keys/.gitkeep
+!keys/README.md
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+
+# Node
+node_modules/
+dist/
+.next/
+
+# Docker
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+app-remoto/agent-core/lambda-package.zip
+app-remoto/agent-core/package/
+app-remoto/infrastructure/.terraform/
+terraform.tfvars
+*.tfvars
