@@ -1,0 +1,16 @@
+﻿{
+  "numeroProcesso": "123456",
+  "classe": "Cumprimento de Sentenca",
+  "orgaoJulgador": "19a VARA FEDERAL",
+  "ultimaDistribuicao": "2023-01-01T00:00:00",
+  "assunto": "Indenizacao",
+  "segredoJustica": false,
+  "justicaGratuita": false,
+  "siglaTribunal": "TRF5",
+  "esfera": "Federal",
+  "valorCondenacao": 50000,
+  "transitadoEmJulgado": true,
+  "faseExecucao": true,
+  "documentos": [],
+  "movimentos": []
+}

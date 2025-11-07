@@ -1,0 +1,13 @@
+# Ignorar TODAS as chaves
+*.csv
+*.txt
+*.json
+*.key
+*.pem
+
+# Exceto arquivos de documentação
+!README.md
+!.gitignore
+
+# Manter apenas config.py (sem chaves hardcoded)
+!config.py

@@ -1,0 +1,113 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: langflow-postgres
+    environment:
+      - POSTGRES_USER=langflow
+      - POSTGRES_PASSWORD=langflow
+      - POSTGRES_DB=langflow
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - juscrash-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U langflow"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  langflow:
+    image: langflowai/langflow:latest
+    container_name: langflow
+    hostname: langflow
+    ports:
+      - "7860:7860"
+    env_file:
+      - ../keys/.env
+    environment:
+      - LANGFLOW_AUTO_LOGIN=true
+      - LANGFLOW_DATABASE_URL=postgresql://langflow:langflow@postgres:5432/langflow
+      - AWS_DEFAULT_REGION=us-east-1
+      - BEDROCK_MODEL_ID=us.anthropic.claude-sonnet-4-5-20250929-v1:0
+    command: langflow run --host 0.0.0.0 --port 7860 --no-open-browser
+    networks:
+      - juscrash-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  frontend:
+    build: ./frontend
+    container_name: juscrash-frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    networks:
+      - juscrash-network
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: .
+      dockerfile: ./backend/Dockerfile
+    container_name: juscrash-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+      - ./keys:/app/keys
+      - ./langflow-flows:/app/langflow-flows
+    env_file:
+      - ../keys/.env
+    environment:
+      - LANGFLOW_URL=http://langflow:7860
+    networks:
+      - juscrash-network
+    depends_on:
+      - langflow
+
+  sync-agent:
+    build: ./sync-agent
+    container_name: juscrash-sync-agent
+    volumes:
+      - ./langflow-flows:/app/langflow-flows
+    networks:
+      - juscrash-network
+    depends_on:
+      - langflow
+      - postgres
+    restart: unless-stopped
+    command: ["python", "-u", "sync_bidirectional.py"]
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+
+  sync-tradutor:
+    build: ./sync-agent
+    container_name: juscrash-sync-tradutor
+    volumes:
+      - ./langflow-flows:/app/langflow-flows
+      - ./backend/app:/app/backend/app
+    env_file:
+      - ../keys/.env
+    networks:
+      - juscrash-network
+    depends_on:
+      - sync-agent
+    restart: unless-stopped
+    command: ["python", "-u", "sync_tradutor.py"]
+
+volumes:
+  postgres-data:
+
+networks:
+  juscrash-network:
+    driver: bridge

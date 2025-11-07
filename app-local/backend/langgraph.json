@@ -1,0 +1,10 @@
+{
+  "dependencies": ["."],
+  "graphs": {
+    "juscrash": "./app/graph.py:app_graph"
+  },
+  "env": ".env",
+  "cors": {
+    "allow_origins": ["*"]
+  }
+}

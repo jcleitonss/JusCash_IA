@@ -1,0 +1,35 @@
+{
+  "numeroProcesso": "0001234-56.2023.8.26.0100",
+  "classe": "Procedimento Comum Cível",
+  "orgaoJulgador": "1ª Vara Cível",
+  "ultimaDistribuicao": "2023-01-15T10:30:00Z",
+  "assunto": "Indenização por Danos Morais",
+  "segredoJustica": false,
+  "justicaGratuita": false,
+  "siglaTribunal": "TJSP",
+  "esfera": "estadual",
+  "documentos": [
+    {
+      "id": "doc-001",
+      "dataHoraJuntada": "2023-06-10T14:20:00Z",
+      "nome": "Certidão de Trânsito em Julgado",
+      "texto": "Certifico que a sentença transitou em julgado em 10/06/2023."
+    },
+    {
+      "id": "doc-002",
+      "dataHoraJuntada": "2023-06-15T09:00:00Z",
+      "nome": "Cálculo de Liquidação",
+      "texto": "Valor atualizado da condenação: R$ 50.000,00. Honorários advocatícios: 20%."
+    }
+  ],
+  "movimentos": [
+    {
+      "dataHora": "2023-06-20T11:00:00Z",
+      "descricao": "Início da fase de cumprimento de sentença"
+    },
+    {
+      "dataHora": "2023-07-01T15:30:00Z",
+      "descricao": "Citação do executado para pagamento"
+    }
+  ]
+}
