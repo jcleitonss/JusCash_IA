@@ -77,7 +77,7 @@ graph TB
     classDef obs fill:#6B7280,stroke:#4B5563,stroke-width:2px,color:#fff
 ```
 
-> 📚 **[Arquitetura Completa](docs/ARCHITECTURE.md)** | **[Sync Agent](docs/SYNC_FLOW.md)** | **[Sync Tradutor](docs/SYNC_TRADUTOR.md)**
+> 📚 **[Arquitetura Completa](docs/Architecture/ARCHITECTURE.md)** | **[Sync Agent](docs/Architecture/SYNC_FLOW.md)** | **[Sync Tradutor](docs/Architecture/SYNC_TRADUTOR.md)**
 
 **Infraestrutura:**
 - **CloudFront:** CDN global (200+ edge locations)
@@ -324,7 +324,7 @@ graph TB
     classDef git fill:#6B7280,stroke:#4B5563,stroke-width:2px,color:#fff
 ```
 
-> 📚 **[Sync Agent](docs/SYNC_FLOW.md)** | **[Sync Tradutor](docs/SYNC_TRADUTOR.md)** | **[Arquitetura Local](docs/ARCHITECTURE.md#-5-ambiente-local-docker-compose)**
+> 📚 **[Sync Agent](docs/Architecture/SYNC_FLOW.md)** | **[Sync Tradutor](docs/Architecture/SYNC_TRADUTOR.md)** | **[Arquitetura Local](docs/Architecture/ARCHITECTURE.md#-5-ambiente-local-docker-compose)**
 
 **Fluxo:**
 1. Dev edita workflow no LangFlow (drag-and-drop)
