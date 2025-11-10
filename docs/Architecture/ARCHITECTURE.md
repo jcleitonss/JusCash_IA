@@ -648,7 +648,7 @@ graph LR
 
 ## 📚 Referências
 
-- **Código:** [GitHub - JUSCRASH](https://github.com/jcleitonss/JusCash)
+- **Código:** [https://github.com/jcleitonss/JusCash_IA)
 - **API Produção:** https://3p6xtd91q4.execute-api.us-east-1.amazonaws.com/prod
 - **Frontend:** https://d26fvod1jq9hfb.cloudfront.net
 - **LangSmith:** https://smith.langchain.com
