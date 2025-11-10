@@ -1,4 +1,4 @@
-# 🏗️ JUSCRASH - Arquitetura e Fluxos
+# 🏗️ JUSCASH - Arquitetura e Fluxos
 
 Documentação visual completa da arquitetura, fluxos de dados e decisões técnicas do sistema JUSCRASH.
 
